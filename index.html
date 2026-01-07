@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SERTER S.A. | Transporte de Carga Pesada y Logística Ecuador</title>
     
-    <!-- Tailwind CSS (Estilos modernos sin archivos extra) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Iconos Lucide (Los mismos del diseño anterior) -->
+    <!-- Iconos Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Fuentes Google -->
@@ -20,6 +20,7 @@
         .scroll-active { background-color: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); padding-top: 0.75rem; padding-bottom: 0.75rem; }
         .scroll-active .nav-text { color: #0f172a; }
         .scroll-active .logo-text { color: #0f172a; }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 antialiased">
@@ -122,12 +123,6 @@
                     <a href="#contacto" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-sm font-bold uppercase tracking-wider text-sm transition-all shadow-lg hover:shadow-orange-500/20 flex items-center justify-center">
                         Solicitar Cotización <i data-lucide="chevron-right" class="ml-2 w-4 h-4"></i>
                     </a>
-                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-sm p-1 flex items-center pl-4 pr-1">
-                        <input type="text" placeholder="Número de Guía / Contenedor" class="bg-transparent border-none text-white placeholder-slate-300 text-sm focus:ring-0 w-full outline-none p-2">
-                        <button class="bg-slate-800 hover:bg-slate-900 text-white p-2.5 rounded-sm">
-                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -332,24 +327,25 @@
                     </div>
                 </div>
 
-                <!-- Formulario -->
+                <!-- Formulario FUNCIONAL -->
                 <div class="p-10 md:w-3/5 bg-gray-50">
-                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Gracias. En una web real, esto enviaría el correo.');">
+                    <!-- IMPORTANTE: Reemplaza la URL en 'action' por la que te dé Formspree -->
+                    <form class="space-y-4" action="https://formspree.io/f/PON_AQUI_TU_LINK_DE_FORMSPREE" method="POST">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre / Empresa</label>
-                                <input type="text" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none" placeholder="Tu Empresa S.A.">
+                                <input type="text" name="nombre" required class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none" placeholder="Tu Empresa S.A.">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Teléfono / Celular</label>
-                                <input type="tel" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none" placeholder="099...">
+                                <input type="tel" name="telefono" required class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none" placeholder="099...">
                             </div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Ciudad Origen</label>
-                                <select class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
+                                <select name="origen" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
                                     <option>Seleccionar...</option>
                                     <option>Guayaquil (Puerto)</option>
                                     <option>Quito</option>
@@ -359,7 +355,7 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Ciudad Destino</label>
-                                <select class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
+                                <select name="destino" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
                                     <option>Seleccionar...</option>
                                     <option>Quito</option>
                                     <option>Guayaquil</option>
@@ -371,7 +367,7 @@
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tipo de Carga</label>
-                            <select class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
+                            <select name="tipo_carga" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
                                 <option>Carga General (Paletizada)</option>
                                 <option>Contenedor 20' / 40'</option>
                                 <option>Carga Refrigerada</option>
@@ -381,7 +377,7 @@
 
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Detalles Adicionales</label>
-                            <textarea rows="3" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none" placeholder="Peso aproximado, fecha requerida, requerimientos especiales..."></textarea>
+                            <textarea name="mensaje" rows="3" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none" placeholder="Peso aproximado, fecha requerida, requerimientos especiales..."></textarea>
                         </div>
 
                         <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-sm uppercase tracking-wider transition-colors shadow-lg">
@@ -447,7 +443,7 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Lógica de Scroll (Navbar cambia de color)
+        // Lógica de Scroll
         const navbar = document.getElementById('navbar');
         const navTexts = document.querySelectorAll('.nav-text');
         const logoTexts = document.querySelectorAll('.logo-text');
