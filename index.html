@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SERTER S.A. | Transporte de Carga Pesada y Logística Ecuador</title>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (Estilos) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Iconos Lucide -->
+    <!-- Iconos -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Fuentes Google -->
@@ -17,10 +17,14 @@
     <style>
         body { font-family: 'Roboto', sans-serif; }
         h1, h2, h3, h4, .brand-font { font-family: 'Exo 2', sans-serif; }
+        /* Efecto al bajar con el mouse (Scroll) */
         .scroll-active { background-color: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); padding-top: 0.75rem; padding-bottom: 0.75rem; }
         .scroll-active .nav-text { color: #0f172a; }
         .scroll-active .logo-text { color: #0f172a; }
         html { scroll-behavior: smooth; }
+        /* Animación suave para cuando aparece el campo "Otro" */
+        .fade-in-input { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-gray-50 text-slate-800 antialiased">
@@ -37,7 +41,7 @@
         </span>
     </a>
 
-    <!-- BARRA SUPERIOR -->
+    <!-- BARRA SUPERIOR (Info rápida) -->
     <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 hidden md:block">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex space-x-6">
@@ -47,7 +51,7 @@
         </div>
     </div>
 
-    <!-- NAVEGACIÓN PRINCIPAL -->
+    <!-- NAVEGACIÓN PRINCIPAL (Menú) -->
     <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 bg-transparent py-5">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <!-- Logo -->
@@ -89,7 +93,7 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- PORTADA (Hero Section) -->
     <header id="inicio" class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         <!-- Overlay oscuro -->
         <div class="absolute inset-0 bg-slate-900/80 z-10"></div>
@@ -123,7 +127,7 @@
             </div>
         </div>
 
-        <!-- Barra de Confianza -->
+        <!-- Barra de Confianza (Iconos abajo) -->
         <div class="absolute bottom-0 w-full bg-white/5 border-t border-white/10 backdrop-blur-md z-20 py-6 hidden md:block">
             <div class="container mx-auto px-4 flex justify-around text-white/80">
                 <div class="flex items-center space-x-3">
@@ -261,7 +265,7 @@
         </div>
     </section>
 
-    <!-- COBERTURA -->
+    <!-- COBERTURA (Mapa de texto) -->
     <section id="cobertura" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold text-slate-900 mb-4">Cobertura Nacional</h2>
@@ -280,12 +284,12 @@
         </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- SECCIÓN DE CONTACTO -->
     <section id="contacto" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden flex flex-col md:flex-row">
                 
-                <!-- Info Contacto -->
+                <!-- Columna Izquierda: Información -->
                 <div class="bg-slate-900 text-white p-10 md:w-2/5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-2xl font-bold mb-2">Hablemos de negocios</h3>
@@ -323,17 +327,16 @@
                     </div>
                 </div>
 
-                <!-- Formulario FUNCIONAL - ACTUALIZADO CON FORMSUBMIT -->
+                <!-- Columna Derecha: Formulario -->
                 <div class="p-10 md:w-3/5 bg-gray-50">
-                    <!-- IMPORTANTE: SE HA ACTUALIZADO EL CORREO A serter@sertersa.com -->
                     <form class="space-y-4" action="https://formsubmit.co/serter@sertersa.com" method="POST">
                         
-                        <!-- Campos Ocultos de Configuración de FormSubmit -->
+                        <!-- Configuraciones Ocultas FormSubmit -->
                         <input type="hidden" name="_subject" value="Nueva Cotización desde Web Sertersa">
                         <input type="hidden" name="_captcha" value="false">
-                        <!-- <input type="hidden" name="_next" value="https://sertersa.com/"> -->
-                        <!-- Fin Configuración -->
+                        <input type="hidden" name="_next" value="https://sertersa.com/">
 
+                        <!-- Campos de Nombre y Correo -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
                                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre / Empresa</label>
@@ -349,29 +352,41 @@
                             </div>
                         </div>
 
+                        <!-- Campos de Origen y Destino con opción "Otro" -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- ORIGEN -->
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Ciudad Origen</label>
-                                <select name="origen" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
-                                    <option>Seleccionar...</option>
-                                    <option>Guayaquil (Puerto)</option>
-                                    <option>Quito</option>
-                                    <option>Manta</option>
-                                    <option>Otro</option>
+                                <select name="origen" id="origen_select" onchange="toggleOtro('origen')" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Guayaquil (Puerto)">Guayaquil (Puerto)</option>
+                                    <option value="Guayaquil (Aeropuerto)">Guayaquil (Aeropuerto)</option>
+                                    <option value="Posorja">Posorja</option>
+                                    <option value="Cuenca">Cuenca</option>
+                                    <option value="Manta">Manta</option>
+                                    <option value="Machala">Machala</option>
+                                    <option value="Otro">Otro (Especificar)</option>
                                 </select>
+                                <input type="text" name="origen_otro" id="origen_otro" placeholder="Especifique ciudad origen" class="hidden w-full mt-2 bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none fade-in-input">
                             </div>
+                            <!-- DESTINO -->
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Ciudad Destino</label>
-                                <select name="destino" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
-                                    <option>Seleccionar...</option>
-                                    <option>Quito</option>
-                                    <option>Guayaquil</option>
-                                    <option>Cuenca</option>
-                                    <option>Otro</option>
+                                <select name="destino" id="destino_select" onchange="toggleOtro('destino')" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Guayaquil (Puerto)">Guayaquil (Puerto)</option>
+                                    <option value="Guayaquil (Aeropuerto)">Guayaquil (Aeropuerto)</option>
+                                    <option value="Posorja">Posorja</option>
+                                    <option value="Cuenca">Cuenca</option>
+                                    <option value="Manta">Manta</option>
+                                    <option value="Machala">Machala</option>
+                                    <option value="Otro">Otro (Especificar)</option>
                                 </select>
+                                <input type="text" name="destino_otro" id="destino_otro" placeholder="Especifique ciudad destino" class="hidden w-full mt-2 bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none fade-in-input">
                             </div>
                         </div>
 
+                        <!-- Tipo de Carga -->
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Tipo de Carga</label>
                             <select name="tipo_carga" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none">
@@ -382,6 +397,7 @@
                             </select>
                         </div>
 
+                        <!-- Detalles -->
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Detalles Adicionales</label>
                             <textarea name="mensaje" rows="3" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none" placeholder="Peso aproximado, fecha requerida, requerimientos especiales..."></textarea>
@@ -396,7 +412,7 @@
         </div>
     </section>
 
-    <!-- FOOTER - ACTUALIZADO CON INSTAGRAM -->
+    <!-- FOOTER -->
     <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
             <div>
@@ -406,7 +422,7 @@
                 </div>
                 <p class="mb-4">Soluciones logísticas integrales en Ecuador desde 2012. Especialistas en carga pesada y gestión de cadena de suministro.</p>
                 
-                <!-- REDES SOCIALES AGREGADAS -->
+                <!-- Redes Sociales -->
                 <div class="flex space-x-4 mt-4">
                     <a href="https://instagram.com/serter_sa" target="_blank" class="text-slate-400 hover:text-orange-500 transition-colors">
                         <i data-lucide="instagram" class="w-5 h-5"></i>
@@ -450,12 +466,12 @@
         </div>
     </footer>
 
-    <!-- SCRIPT PARA INTERACTIVIDAD -->
+    <!-- LOGICA JAVASCRIPT -->
     <script>
         // Inicializar iconos
         lucide.createIcons();
 
-        // Lógica de Menú Móvil
+        // Menú Móvil
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
@@ -463,7 +479,21 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Lógica de Scroll
+        // Lógica para mostrar campo "Otro" (Nuevo)
+        function toggleOtro(field) {
+            const select = document.getElementById(field + '_select');
+            const input = document.getElementById(field + '_otro');
+            if (select.value === 'Otro') {
+                input.classList.remove('hidden');
+                input.required = true; // Se vuelve obligatorio si elige Otro
+            } else {
+                input.classList.add('hidden');
+                input.required = false;
+                input.value = ''; // Se limpia si cambia de opinión
+            }
+        }
+
+        // Cambio de color de la barra al bajar
         const navbar = document.getElementById('navbar');
         const navTexts = document.querySelectorAll('.nav-text');
         const logoTexts = document.querySelectorAll('.logo-text');
