@@ -321,22 +321,23 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="mt-12">
-                        <p class="text-xs text-slate-500">SERTER S.A. © 2026</p>
-                    </div>
-                </div>
-
-                <!-- Columna Derecha: Formulario -->
+                <!-- Formulario FUNCIONAL - ACTUALIZADO CON FORMSUBMIT -->
                 <div class="p-10 md:w-3/5 bg-gray-50">
+                    <!-- IMPORTANTE: SE HA ACTUALIZADO EL CORREO A serter@sertersa.com -->
                     <form class="space-y-4" action="https://formsubmit.co/serter@sertersa.com" method="POST">
                         
                         <!-- Configuraciones Ocultas FormSubmit -->
                         <input type="hidden" name="_subject" value="Nueva Cotización desde Web Sertersa">
-                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <!-- PROTECCIÓN ANTI-SPAM (NUEVO) -->
+                        <!-- 1. Activamos el Captcha (antes estaba en false) -->
+                        <input type="hidden" name="_captcha" value="true">
+                        <!-- 2. Trampa para robots (Honeypot) - Si un bot llena esto, el mensaje se borra -->
+                        <input type="text" name="_honey" style="display:none">
+                        
                         <input type="hidden" name="_next" value="https://sertersa.com/">
+                        <!-- Fin Configuración -->
 
-                        <!-- Campos de Nombre y Correo -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
                                 <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre / Empresa</label>
