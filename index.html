@@ -224,7 +224,7 @@
         <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-800 skew-x-12 opacity-50"></div>
         
         <div class="container mx-auto px-4 relative z-10 flex flex-col lg:flex-row items-center">
-            <div class="lg:w-1/2 pr-0 lg:pr-16 mb-12 lg:mb-0">
+            <div class="w-full lg:w-1/2 pr-0 lg:pr-16 mb-12 lg:mb-0">
                 <h2 class="text-orange-500 font-bold tracking-widest uppercase text-sm mb-2">Ingeniería Logística</h2>
                 <h3 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
                     Más que camiones,<br>ofrecemos <span class="text-white border-b-4 border-orange-600">certeza.</span>
@@ -257,7 +257,7 @@
                 </div>
             </div>
             
-            <div class="lg:w-1/2 bg-white rounded-sm p-2 rotate-1 shadow-2xl">
+            <div class="w-full lg:w-1/2 bg-white rounded-sm p-2 rotate-1 shadow-2xl">
                 <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
                      alt="Logística en Puerto" 
                      class="w-full h-auto rounded-sm -rotate-1">
@@ -287,10 +287,10 @@
     <!-- SECCIÓN DE CONTACTO -->
     <section id="contacto" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden flex flex-col md:flex-row">
+            <div class="max-w-5xl mx-auto bg-white shadow-2xl rounded-lg overflow-hidden flex flex-col lg:flex-row">
                 
                 <!-- Columna Izquierda: Información -->
-                <div class="bg-slate-900 text-white p-10 md:w-2/5 flex flex-col justify-between">
+                <div class="bg-slate-900 text-white p-10 w-full lg:w-2/5 flex flex-col justify-between">
                     <div>
                         <h3 class="text-2xl font-bold mb-2">Hablemos de negocios</h3>
                         <p class="text-slate-400 mb-8 text-sm">Completa el formulario y recibe una cotización en menos de 2 horas laborables.</p>
@@ -321,20 +321,24 @@
                             </div>
                         </div>
                     </div>
-                <!-- Formulario FUNCIONAL - ACTUALIZADO CON FORMSUBMIT -->
-                <div class="p-10 md:w-3/5 bg-gray-50">
-                    <!-- IMPORTANTE: SE HA ACTUALIZADO EL CORREO A serter@sertersa.com -->
+                    
+                    <div class="mt-12">
+                        <p class="text-xs text-slate-500">SERTER S.A. © 2026</p>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Formulario -->
+                <div class="p-10 w-full lg:w-3/5 bg-gray-50">
                     <form class="space-y-4" action="https://formsubmit.co/serter@sertersa.com" method="POST">
                         
                         <!-- Configuraciones Ocultas FormSubmit -->
                         <input type="hidden" name="_subject" value="Nueva Cotización desde Web Sertersa">
                         
                         <!-- PROTECCIÓN ANTI-SPAM (NUEVO) -->
-                        <!-- 1. Activamos el Captcha (antes estaba en false) -->
                         <input type="hidden" name="_captcha" value="true">
-                        <!-- 2. Trampa para robots (Honeypot) - Si un bot llena esto, el mensaje se borra -->
                         <input type="text" name="_honey" style="display:none">
                         
+                        <!-- Redirección Automática (ACTIVA) -->
                         <input type="hidden" name="_next" value="https://sertersa.com/">
                         <!-- Fin Configuración -->
 
