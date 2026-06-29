@@ -114,10 +114,19 @@
                         tu bodega.
                     </span>
                 </h1>
+                
                 <p class="text-lg text-slate-300 mb-8 max-w-xl leading-relaxed">
                     Gestión logística experta para carga pesada y carga suelta. 
                     Conectamos Guayaquil con todo el Ecuador mediante una red de transporte segura, monitoreada y certificada.
                 </p>
+                
+                <!-- ALERTA DE FILTRO -->
+                <div class="bg-slate-800/80 border-l-4 border-orange-500 text-slate-200 px-4 py-3 rounded-sm mb-8 inline-block max-w-xl backdrop-blur-sm shadow-xl">
+                    <p class="text-sm font-semibold flex items-start">
+                        <i data-lucide="info" class="w-5 h-5 mr-2 text-orange-500 shrink-0 mt-0.5"></i>
+                        <span>Enfoque Corporativo: Especialistas en <span class="text-orange-400">carga pesada e industrial</span>. Nuestros servicios no incluyen logística residencial, paquetería minorista ni mudanzas.</span>
+                    </p>
+                </div>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#contacto" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-sm font-bold uppercase tracking-wider text-sm transition-all shadow-lg hover:shadow-orange-500/20 flex items-center justify-center">
@@ -162,7 +171,8 @@
                 <h2 class="text-orange-600 font-bold tracking-widest uppercase text-sm mb-2">Soluciones Integrales</h2>
                 <h3 class="text-3xl md:text-4xl font-bold text-slate-900">¿Qué movemos por ti?</h3>
                 <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
-                    Nuestra licencia universal (CIIU H4923.01) nos permite gestionar tu carga con precisión técnica.
+                    Nuestra licencia universal (CIIU H4923.01) nos permite gestionar su carga con precisión técnica. <br>
+                    <span class="text-slate-500 font-medium text-sm mt-2 block border-t border-slate-200 pt-2 inline-block">Servicio exclusivo para el sector industrial, comercial y portuario. No gestionamos requerimientos residenciales o de paquetería.</span>
                 </p>
             </div>
 
@@ -397,6 +407,16 @@
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Detalles Adicionales</label>
                             <textarea name="mensaje" rows="3" class="w-full bg-white border border-gray-300 rounded-sm px-4 py-2 text-sm focus:border-orange-500 outline-none" placeholder="Peso aproximado, fecha requerida, requerimientos especiales..."></textarea>
+                        </div>
+
+                        <!-- Filtro Checkbox Obligatorio -->
+                        <div class="bg-orange-50 border border-orange-200 p-3 rounded-sm">
+                            <label class="flex items-start space-x-3 cursor-pointer">
+                                <input type="checkbox" required class="mt-0.5 w-4 h-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded">
+                                <span class="text-xs text-slate-800 font-medium leading-relaxed">
+                                    Confirmo que mi requerimiento corresponde a <strong>transporte de carga pesada, industrial o comercial</strong>, y no a servicios residenciales (mudanzas) o paquetería individual.
+                                </span>
+                            </label>
                         </div>
 
                         <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-sm uppercase tracking-wider transition-colors shadow-lg">
